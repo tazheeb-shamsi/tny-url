@@ -47,7 +47,7 @@ const Analytics = () => {
 
   const handleCopyToClipboard = () => {
     navigator.clipboard.writeText(
-      `http://localhost:5173/${urlInfoData?.short_url}`
+      `${import.meta.env.VITE_BASE_URL}/${urlInfoData?.short_url}`
     );
     setCopied(true);
 
@@ -115,11 +115,11 @@ const Analytics = () => {
             {urlInfoData?.title}
           </span>
           <a
-            href={`https://tny.in/${link}`}
+            href={`${import.meta.env.VITE_BASE_URL}/${link}`}
             target="_blank"
             className="text-3xl sm:text-4xl text-blue-400 font-bold hover:underline cursor-pointer"
           >
-            https://tny.in/{link}
+            `${import.meta.env.VITE_BASE_URL}/${link}`
           </a>
           <a
             href={urlInfoData?.original_url}

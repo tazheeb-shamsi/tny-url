@@ -1,16 +1,26 @@
-import { Clock, Copy, CopyCheck, Download, LinkIcon, Trash } from "lucide-react";
+import {
+  Clock,
+  Copy,
+  CopyCheck,
+  Download,
+  LinkIcon,
+  Trash,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { useFetch } from "@/hooks/useFetch";
 import { deleteUrl } from "@/db/urlsApi";
 import { ClipLoader } from "react-spinners";
 import { useState } from "react";
-
+import env from "dotenv";
+env.config();
 const LinkCard = ({ url, fetchUrls }) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopyToClipboard = () => {
-    navigator.clipboard.writeText(`http://localhost:5173/${url?.short_url}`);
+    navigator.clipboard.writeText(
+      `${import.meta.env.VITE_BASE_URL}/${url?.short_url}`
+    );
     setCopied(true);
 
     setTimeout(() => {
@@ -71,9 +81,8 @@ const LinkCard = ({ url, fetchUrls }) => {
           {url.title}
         </span>
         <span className="text-2xl font-bold text-blue-400 hover:underline cursor-pointer">
-          http://localhost:5173/
-          {url?.custom_url ? url?.custom_url : url.short_url}
-          {/* https://tny.in/{url?.custom_url ? url?.custom_url : url.short_url} */}
+          `{import.meta.env.VITE_BASE_URL}/
+          {url?.custom_url ? url?.custom_url : url.short_url}`
         </span>
         <span className="flex items-center gap-1 hover:underline cursor-pointer">
           <LinkIcon size={16} />
