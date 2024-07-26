@@ -18,7 +18,8 @@ const LinkCard = ({ url, fetchUrls }) => {
 
   const handleCopyToClipboard = () => {
     navigator.clipboard.writeText(
-      `${import.meta.env.VITE_BASE_URL}/${url?.short_url}`
+      `${import.meta.env.VITE_BASE_URL}/
+          ${url?.custom_url ? url?.custom_url : url.short_url}`
     );
     setCopied(true);
 
@@ -80,8 +81,8 @@ const LinkCard = ({ url, fetchUrls }) => {
           {url.title}
         </span>
         <span className="text-2xl font-bold text-blue-400 hover:underline cursor-pointer">
-          `{import.meta.env.VITE_BASE_URL}/
-          {url?.custom_url ? url?.custom_url : url.short_url}`
+          {import.meta.env.VITE_BASE_URL}/
+          {url?.custom_url ? url?.custom_url : url.short_url}
         </span>
         <span className="flex items-center gap-1 hover:underline cursor-pointer">
           <LinkIcon size={16} />

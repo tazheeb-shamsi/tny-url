@@ -47,7 +47,12 @@ const Analytics = () => {
 
   const handleCopyToClipboard = () => {
     navigator.clipboard.writeText(
-      `${import.meta.env.VITE_BASE_URL}/${urlInfoData?.short_url}`
+      `${import.meta.env.VITE_BASE_URL}/
+          ${
+            urlInfoData?.custom_url
+              ? urlInfoData?.custom_url
+              : urlInfoData.short_url
+          }`
     );
     setCopied(true);
 
@@ -117,9 +122,9 @@ const Analytics = () => {
           <a
             href={`${import.meta.env.VITE_BASE_URL}/${link}`}
             target="_blank"
-            className="text-3xl sm:text-4xl text-blue-400 font-bold hover:underline cursor-pointer"
+            className="text-2xl sm:text-1xl text-blue-400 font-bold hover:underline cursor-pointer"
           >
-            `${import.meta.env.VITE_BASE_URL}/${link}`
+            {import.meta.env.VITE_BASE_URL}/{link}
           </a>
           <a
             href={urlInfoData?.original_url}
