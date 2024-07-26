@@ -12,8 +12,7 @@ import { useFetch } from "@/hooks/useFetch";
 import { deleteUrl } from "@/db/urlsApi";
 import { ClipLoader } from "react-spinners";
 import { useState } from "react";
-import env from "dotenv";
-env.config();
+
 const LinkCard = ({ url, fetchUrls }) => {
   const [copied, setCopied] = useState(false);
 
